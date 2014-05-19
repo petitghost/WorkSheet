@@ -12,7 +12,7 @@ public class Part1 extends TestCase {
 	public void testThatTextCellsAreStored() {
 	  Sheet sheet = new Sheet();
 	  String theCell = "A21";
-
+	  
 	  sheet.put(theCell, "A string");
 	  assertEquals("A string", sheet.get(theCell));
 

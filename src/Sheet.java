@@ -1,8 +1,12 @@
 
 public class Sheet {
+	String text=""; 
+	public String get(String position) {
+		return text; 
+	}
 
-	public String get(String string) {
-		return "";
+	public void put(String position, String value) {
+		text=value;
 	}
 
 }
