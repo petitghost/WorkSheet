@@ -13,8 +13,16 @@ public class Sheet {
 	}
 
 	public void put(String position, String value) {
+		if(value!="" && value!=" "){
+		  int vlength=value.length();
+		  char first=value.charAt(0);
+		  char last=value.charAt(vlength-1);
+		  if(first==' ' && last==' '){
+		    value=value.trim();
+		  }
+		}
 		h.put(position,value);
-	//text=value;
+	
 	}
 
 }
