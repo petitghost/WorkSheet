@@ -39,5 +39,26 @@ public class Part1 extends TestCase {
 	  assertEquals("X27 same", "Second", sheet.get("X27"));
 	  assertEquals("ZX901 same", "Third", sheet.get("ZX901"));
 	}
-	
+	// Implement each test before going to the next one.
+	// You can split this test case if it helps.
+
+	public void testThatNumericCellsAreIdentifiedAndStored() {
+	  Sheet sheet = new Sheet();
+	  String theCell = "A21";
+
+	  sheet.put(theCell, "X99"); // "Obvious" string
+	  assertEquals("X99", sheet.get(theCell));
+
+	  sheet.put(theCell, "14"); // "Obvious" number
+	  assertEquals("14", sheet.get(theCell));
+
+	  sheet.put(theCell, " 99 X"); // Whole string must be numeric
+	  assertEquals(" 99 X", sheet.get(theCell));
+
+	  sheet.put(theCell, " 1234 "); // Blanks ignored
+	  assertEquals("1234", sheet.get(theCell));
+
+	  sheet.put(theCell, " "); // Just a blank
+	  assertEquals(" ", sheet.get(theCell));
+	}
 }

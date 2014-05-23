@@ -1,10 +1,12 @@
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 public class Sheet {
-	Hashtable<String, String> h=new Hashtable<String, String>();
+	Map<String, String> h = new TreeMap<String, String>();
 	String text=""; 
 	public String get(String position) {
 		text=h.get(position);
-		if(h.get(position)==null){
+		if(h.isEmpty()){
 			text="";
 		}
 		return text; 
