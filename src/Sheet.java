@@ -1,9 +1,11 @@
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 public class Sheet {
 	Map<String, String> h = new TreeMap<String, String>();
-	String text=""; 
+	Map<String, String> literal=new TreeMap<String, String>();
+	
+	String text="";
+	String word="";
 	public String get(String position) {
 		text=h.get(position);
 		if(h.isEmpty()){
@@ -13,6 +15,7 @@ public class Sheet {
 	}
 
 	public void put(String position, String value) {
+		literal.put(position, value);
 		if(value!="" && value!=" "){
 		  int vlength=value.length();
 		  char first=value.charAt(0);
@@ -21,8 +24,12 @@ public class Sheet {
 		    value=value.trim();
 		  }
 		}
-		h.put(position,value);
-	
+		h.put(position,value);		
+	}
+
+	public String getLiteral(String theCell) {
+		word=literal.get(theCell);
+		return word;
 	}
 
 }

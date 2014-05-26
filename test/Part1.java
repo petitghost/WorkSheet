@@ -61,4 +61,22 @@ public class Part1 extends TestCase {
 	  sheet.put(theCell, " "); // Just a blank
 	  assertEquals(" ", sheet.get(theCell));
 	}
+	// Refactor before going to each succeeding test.
+
+	public void testThatWeHaveAccessToCellLiteralValuesForEditing() { 
+	  Sheet sheet = new Sheet();
+	  String theCell = "A21";
+
+	  sheet.put(theCell, "Some string"); 
+	  assertEquals("Some string", sheet.getLiteral(theCell));
+
+	  sheet.put(theCell, " 1234 "); 
+	  assertEquals(" 1234 ", sheet.getLiteral(theCell));
+
+	  sheet.put(theCell, "=7"); // Foreshadowing formulas:)
+	  assertEquals("=7", sheet.getLiteral(theCell));
+	}
+
+
+	// We'll talk about "get" and formulas next time.
 }
