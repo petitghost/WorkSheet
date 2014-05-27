@@ -11,15 +11,15 @@ public class Part2 extends TestCase {
 	  assertEquals("Unchanged", " =7", sheet.getLiteral("B1"));
 	}
 
-//	// Next - start on parsing expressions
-//
-//	public void testConstantFormula() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=7");
-//	  assertEquals("Formula", "=7", sheet.getLiteral("A1"));
-//	  assertEquals("Value", "7", sheet.get("A1"));
-//	}
-//
+	// Next - start on parsing expressions
+
+	public void testConstantFormula() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=7");
+	  assertEquals("Formula", "=7", sheet.getLiteral("A1"));
+	  assertEquals("Value", "7", sheet.get("A1"));
+	}
+
 //	// More formula tests. You may feel the need to make up 
 //	// additional intermediate test cases to drive your code
 //	// better. (For example, you might want to test "2*3" 

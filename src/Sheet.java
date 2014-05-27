@@ -1,5 +1,9 @@
 import java.util.Map;
 import java.util.TreeMap;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class Sheet {
 	private Map<String, String> h = new TreeMap<String, String>();
 	
@@ -9,8 +13,8 @@ public class Sheet {
 			return "";
 		}else if(isNumber(text)){
 			return text.trim();
-		}else{			
-			return text; 
+		}else{
+			return isFormula(text); 
 		}
 		
 	}
@@ -27,7 +31,17 @@ public class Sheet {
 		}
 		return true;
 	}
-
+	
+	private String isFormula(String input){
+		Pattern pattern=Pattern.compile("=");
+		Matcher matcher=pattern.matcher(input);
+		if(matcher.lookingAt()){
+			return input.substring(1);
+		}else{
+			return input;
+		}
+	}
+	
 	public void put(String position, String value) {
 		h.put(position,value);		
 	}
