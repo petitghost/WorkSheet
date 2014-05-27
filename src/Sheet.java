@@ -1,49 +1,39 @@
 import java.util.Map;
 import java.util.TreeMap;
 public class Sheet {
-	Map<String, String> h = new TreeMap<String, String>();
-	//Map<String, String> literal=new TreeMap<String, String>();
+	private Map<String, String> h = new TreeMap<String, String>();
 	
-	String text="";
-	String word="";
 	public String get(String position) {
-		text=h.get(position);
+		String text=h.get(position);
 		if(text==null){
-			text="";
-		}else if(text!=" "){
-			String input=text.trim();
-			int count=0;
-			char[] checkInput=input.toCharArray();
-			for(int i=0; i<input.length(); i++){
-				count++;
-				if(!Character.isDigit(checkInput[i])){
-					break;
-				}
-			}
-			if(count==input.length()){
-				text=input;
+			return "";
+		}else if(isNumber(text)){
+			return text.trim();
+		}else{			
+			return text; 
+		}
+		
+	}
+
+	private boolean isNumber(String input) {
+		input=input.trim();
+		if("".equals(input)){
+			return false;
+		}
+		for(char c: input.toCharArray()){
+			if(!Character.isDigit(c)){
+				return false;
 			}
 		}
-		return text; 
+		return true;
 	}
 
 	public void put(String position, String value) {
-		//literal.put(position, value);
-//		if(value!="" && value!=" "){
-//		  int vlength=value.length();
-//		  char first=value.charAt(0);
-//		  char last=value.charAt(vlength-1);
-//		  if(first==' ' && last==' '){
-//		    value=value.trim();
-//		  }
-//		}
 		h.put(position,value);		
 	}
 
 	public String getLiteral(String theCell) {
-		//word=literal.get(theCell);
-		word=h.get(theCell);
-		return word;
+		return h.get(theCell);
 	}
 
 }
