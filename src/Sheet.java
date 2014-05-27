@@ -36,7 +36,12 @@ public class Sheet {
 		Pattern pattern=Pattern.compile("=");
 		Matcher matcher=pattern.matcher(input);
 		if(matcher.lookingAt()){
-			return input.substring(1);
+			String value=input.substring(1);
+			if(value.indexOf("(")==value.indexOf(")")){
+				return value;
+			}else{				
+				return value.substring(value.lastIndexOf("(")+1, value.indexOf(")"));
+			}
 		}else{
 			return input;
 		}

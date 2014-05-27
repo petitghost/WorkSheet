@@ -20,36 +20,36 @@ public class Part2 extends TestCase {
 	  assertEquals("Value", "7", sheet.get("A1"));
 	}
 
-//	// More formula tests. You may feel the need to make up 
-//	// additional intermediate test cases to drive your code
-//	// better. (For example, you might want to test "2*3" 
-//
-//	// before "2*3*4".) That's fine, go ahead and create them.
-//	// Just keep moving one test at a time.
-//
-//	// We're doing expressions; you may need to do a spike
-//	// (investigation) if you're not familiar with parsing.
-//	// For background, look up "recursive descent" or
-//	// "operator precedence". (Other techniques can work as well.)
-//
-//	// Order of tests - I'm familiar enough with parsing to think
-//	// it's probably easiest to do them in this order (highest
-//	// precedence to lowest). For extra credit, you might redo 
-//	// this part of the exercise with the tests in a different order 
-//	// to see what difference it makes.
-//
-//	public void testParentheses() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=(7)");
-//	  assertEquals("Parends", "7", sheet.get("A1"));
-//	}
-//
-//	public void testDeepParentheses() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=((((10))))");
-//	  assertEquals("Parends", "10", sheet.get("A1"));
-//	}
-//
+	// More formula tests. You may feel the need to make up 
+	// additional intermediate test cases to drive your code
+	// better. (For example, you might want to test "2*3" 
+
+	// before "2*3*4".) That's fine, go ahead and create them.
+	// Just keep moving one test at a time.
+
+	// We're doing expressions; you may need to do a spike
+	// (investigation) if you're not familiar with parsing.
+	// For background, look up "recursive descent" or
+	// "operator precedence". (Other techniques can work as well.)
+
+	// Order of tests - I'm familiar enough with parsing to think
+	// it's probably easiest to do them in this order (highest
+	// precedence to lowest). For extra credit, you might redo 
+	// this part of the exercise with the tests in a different order 
+	// to see what difference it makes.
+
+	public void testParentheses() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=(7)");
+	  assertEquals("Parends", "7", sheet.get("A1"));
+	}
+
+	public void testDeepParentheses() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=((((10))))");
+	  assertEquals("Parends", "10", sheet.get("A1"));
+	}
+
 //	public void testMultiply() {
 //	  Sheet sheet = new Sheet();
 //	  sheet.put("A1", "=2*3*4");
