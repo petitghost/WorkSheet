@@ -56,24 +56,24 @@ public class Part2 extends TestCase {
 	  assertEquals("Times", "24", sheet.get("A1"));
 	}
 
-//	public void testAdd() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=71+2+3");
-//	  assertEquals("Add", "76", sheet.get("A1"));
-//	}
-//
-//	public void testPrecedence() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=7+2*3");
-//	  assertEquals("Precedence", "13", sheet.get("A1"));
-//	}
-//
-//	public void testFullExpression() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=7*(2+3)*((((2+1))))");
-//	  assertEquals("Expr", "105", sheet.get("A1"));
-//	}
-//
+	public void testAdd() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=71+2+3");
+	  assertEquals("Add", "76", sheet.get("A1"));
+	}
+
+	public void testPrecedence() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=7+2*3");
+	  assertEquals("Precedence", "13", sheet.get("A1"));
+	}
+
+	public void testFullExpression() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=7*(2+3)*((((2+1))))");
+	  assertEquals("Expr", "105", sheet.get("A1"));
+	}
+
 //	// Add any test cases you feel are missing based on 
 //	// where your code is now.
 //
