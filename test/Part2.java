@@ -50,11 +50,11 @@ public class Part2 extends TestCase {
 	  assertEquals("Parends", "10", sheet.get("A1"));
 	}
 
-//	public void testMultiply() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=2*3*4");
-//	  assertEquals("Times", "24", sheet.get("A1"));
-//	}
+	public void testMultiply() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=2*3*4");
+	  assertEquals("Times", "24", sheet.get("A1"));
+	}
 
 //	public void testAdd() {
 //	  Sheet sheet = new Sheet();

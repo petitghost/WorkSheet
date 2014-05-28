@@ -1,20 +1,23 @@
 import java.util.Map;
 import java.util.TreeMap;
 
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+import org.matheclipse.parser.client.eval.DoubleEvaluator;
 
 public class Sheet {
 	private Map<String, String> h = new TreeMap<String, String>();
 	
-	public String get(String position) {
+	public String get(String position){
 		String text=h.get(position);
 		if(text==null){
 			return "";
 		}else if(isNumber(text)){
 			return text.trim();
 		}else{
-			return isFormula(text); 
+			if(text.startsWith("=")){
+				return evaluate(text); 				
+			}else{
+				return text;
+			}
 		}
 		
 	}
@@ -32,19 +35,13 @@ public class Sheet {
 		return true;
 	}
 	
-	private String isFormula(String input){
-		Pattern pattern=Pattern.compile("=");
-		Matcher matcher=pattern.matcher(input);
-		if(matcher.lookingAt()){
-			String value=input.substring(1);
-			if(value.indexOf("(")==value.indexOf(")")){ //equal -1
-				return value;
-			}else{				
-				return value.substring(value.lastIndexOf("(")+1, value.indexOf(")"));
-			}
-		}else{
-			return input;
-		}
+	private String evaluate(String input){
+		String value=input.substring(1);
+		
+		DoubleEvaluator engine = new DoubleEvaluator();
+		int result = (int) engine.evaluate(value);
+		return String.valueOf(result);
+		
 	}
 	
 	public void put(String position, String value) {
