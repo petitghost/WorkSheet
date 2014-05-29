@@ -1,6 +1,7 @@
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.matheclipse.parser.client.SyntaxError;
 import org.matheclipse.parser.client.eval.DoubleEvaluator;
 
 public class Sheet {
@@ -12,16 +13,34 @@ public class Sheet {
 			return "";
 		}else if(isNumber(text)){
 			return text.trim();
+		}else if(text.startsWith("=")){
+			String sub=text.substring(1);
+				return evaluate(sub);
 		}else{
-			if(text.startsWith("=")){
-				return evaluate(text); 				
-			}else{
-				return text;
-			}
+			return text;
 		}
+	}
 		
+	public void put(String position, String value) {
+		if(value.startsWith("=") && isCellValue(value)){			
+			h.put(position, h.get(value.substring(1)));
+		}else{
+			h.put(position,value);
+		}
 	}
 
+	private boolean isCellValue(String input){
+		//String sub=input.substring(1);
+		if(h.get(input.substring(1))!=null){
+			return true;
+		}else
+			return false;
+	}
+	
+	public String getLiteral(String position) {
+		return h.get(position);
+	}
+	
 	private boolean isNumber(String input) {
 		input=input.trim();
 		if("".equals(input)){
@@ -36,23 +55,15 @@ public class Sheet {
 	}
 	
 	private String evaluate(String input){
-		String value = input.substring(1);
 		try {
 			DoubleEvaluator engine = new DoubleEvaluator();
-			int result = (int) engine.evaluate(value);
+			int result = (int) engine.evaluate(input);
 			return String.valueOf(result);
-		} catch (Exception e) {
+		} catch (SyntaxError e) {
 			return "#Error";
 		}
 		
 	}
 	
-	public void put(String position, String value) {
-		h.put(position,value);		
-	}
-
-	public String getLiteral(String theCell) {
-		return h.get(theCell);
-	}
 
 }
