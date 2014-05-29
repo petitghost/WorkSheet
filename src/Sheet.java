@@ -36,11 +36,14 @@ public class Sheet {
 	}
 	
 	private String evaluate(String input){
-		String value=input.substring(1);
-		
-		DoubleEvaluator engine = new DoubleEvaluator();
-		int result = (int) engine.evaluate(value);
-		return String.valueOf(result);
+		String value = input.substring(1);
+		try {
+			DoubleEvaluator engine = new DoubleEvaluator();
+			int result = (int) engine.evaluate(value);
+			return String.valueOf(result);
+		} catch (Exception e) {
+			return "#Error";
+		}
 		
 	}
 	

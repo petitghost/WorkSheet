@@ -74,31 +74,31 @@ public class Part2 extends TestCase {
 	  assertEquals("Expr", "105", sheet.get("A1"));
 	}
 
-//	// Add any test cases you feel are missing based on 
-//	// where your code is now.
-//
-//	// Then try your hand at a few test cases: Add "-" and "/"
-//
-//	// with normal precedence. 
-//
-//	// Next, error handling.
-//
-//	public void testSimpleFormulaError() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=7*");
-//	  assertEquals("Error", "#Error", sheet.get("A1"));
-//	}
-//
-//	public void testParenthesisError() {
-//	  Sheet sheet = new Sheet();
-//	  sheet.put("A1", "=(((((7))");
-//	  assertEquals("Error", "#Error", sheet.get("A1")); 
-//	}
-//
-//	// Add any more error cases you need. Numeric errors (e.g.,
-//	// divide by 0) can return #Error too.
-//
-//	// Take a deep breath and refactor. This was a big jump.
-//	// Next time we'll tackle formulas involving cells.
+	// Add any test cases you feel are missing based on 
+	// where your code is now.
+
+	// Then try your hand at a few test cases: Add "-" and "/"
+
+	// with normal precedence. 
+
+	// Next, error handling.
+
+	public void testSimpleFormulaError() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=7*");
+	  assertEquals("Error", "#Error", sheet.get("A1"));
+	}
+
+	public void testParenthesisError() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=(((((7))");
+	  assertEquals("Error", "#Error", sheet.get("A1")); 
+	}
+
+	// Add any more error cases you need. Numeric errors (e.g.,
+	// divide by 0) can return #Error too.
+
+	// Take a deep breath and refactor. This was a big jump.
+	// Next time we'll tackle formulas involving cells.
 
 }
