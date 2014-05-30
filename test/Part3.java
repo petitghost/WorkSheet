@@ -10,15 +10,16 @@ public class Part3 extends TestCase {
 		  assertEquals("cell lookup", "8", sheet.get("A2"));
 		}
 
-//		public void testThatCellChangesPropagate () {
-//		  Sheet sheet = new Sheet();
-//		  sheet.put("A1", "8");
-//		  sheet.put("A2", "=A1");
-//		  assertEquals("cell lookup", "8", sheet.get("A2"));
-//
-//		  sheet.put("A1", "9");
-//		  assertEquals("cell change propagation", "9", sheet.get("A2"));
-//		}
+		public void testThatCellChangesPropagate () {
+		  Sheet sheet = new Sheet();
+		  sheet.put("A1", "8");
+		  sheet.put("A2", "=A1");
+		  assertEquals("cell lookup", "8", sheet.get("A2"));
+
+		  sheet.put("A1", "9");
+		  assertEquals("cell change propagation", "9", sheet.get("A2"));
+		}
+		
 
 //		public void testThatFormulasKnowCellsAndRecalculate () {
 //		  Sheet sheet = new Sheet();

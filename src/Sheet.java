@@ -1,37 +1,41 @@
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.matheclipse.parser.client.SyntaxError;
 import org.matheclipse.parser.client.eval.DoubleEvaluator;
 
 public class Sheet {
-	private Map<String, String> h = new TreeMap<String, String>();
+	public Map<String, String> h = new TreeMap<String, String>();
 	
 	public String get(String position){
 		String text=h.get(position);
+		
 		if(text==null){
 			return "";
 		}else if(isNumber(text)){
 			return text.trim();
 		}else if(text.startsWith("=")){
 			String sub=text.substring(1);
-				return evaluate(sub);
+			if(isCell(sub)){
+				return h.get(sub);
+			}else{
+				return evaluate(sub);				
+			}
 		}else{
 			return text;
 		}
 	}
 		
 	public void put(String position, String value) {
-		if(value.startsWith("=") && isCellValue(value)){			
-			h.put(position, h.get(value.substring(1)));
-		}else{
 			h.put(position,value);
-		}
 	}
 
-	private boolean isCellValue(String input){
-		//String sub=input.substring(1);
-		if(h.get(input.substring(1))!=null){
+	private boolean isCell(String input){
+		Pattern p=Pattern.compile("[A-Z]+\\d+");
+		Matcher m=p.matcher(input);
+		if(m.matches()){
 			return true;
 		}else
 			return false;
