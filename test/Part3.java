@@ -32,17 +32,17 @@ public class Part3 extends TestCase {
 		  assertEquals("re-calculation", "18", sheet.get("B1"));
 		}
 
-//		public void testThatDeepPropagationWorks () {
-//		  Sheet sheet = new Sheet();
-//		  sheet.put("A1", "8");
-//		  sheet.put("A2", "=A1");
-//		  sheet.put("A3", "=A2");
-//		  sheet.put("A4", "=A3");
-//		  assertEquals("deep propagation", "8", sheet.get("A4"));
-//
-//		  sheet.put("A2", "6");
-//		  assertEquals("deep re-calculation", "6", sheet.get("A4"));
-//		}
+		public void testThatDeepPropagationWorks () {
+		  Sheet sheet = new Sheet();
+		  sheet.put("A1", "8");
+		  sheet.put("A2", "=A1");
+		  sheet.put("A3", "=A2");
+		  sheet.put("A4", "=A3");
+		  assertEquals("deep propagation", "8", sheet.get("A4"));
+
+		  sheet.put("A2", "6");
+		  assertEquals("deep re-calculation", "6", sheet.get("A4"));
+		}
 //
 //
 //		// The following test is likely to pass already.

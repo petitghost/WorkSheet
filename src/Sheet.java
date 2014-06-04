@@ -17,9 +17,7 @@ public class Sheet {
 		}else if(isNumber(text)){
 			return text.trim();
 		}else if(text.startsWith("=")){
-			String sub=text.substring(1);
-			return evaluate(CellValue(sub));
-			
+			return evaluate(CellValue(text.substring(1)));
 		}else{
 			return text;
 		}
@@ -30,17 +28,17 @@ public class Sheet {
 	}
 
 	private String CellValue(String input){
-		String replace="";
 		Pattern p=Pattern.compile("[A-Z]+\\d+");
 		Matcher m=p.matcher(input);
 		while(m.find()){	
-			replace=input.replaceAll(m.group(), h.get(m.group()));
-			input=replace;
+			String position=m.group();
+			String value=h.get(position);
+			while(value.startsWith("=")){
+				value=h.get(value.substring(1));
+			}
+			input=input.replaceAll(position, value);
 		}
-		if(m.matches()){
-			return replace;
-		}else
-			return input;
+		return input;
 	}
 	
 	public String getLiteral(String position) {
@@ -68,6 +66,11 @@ public class Sheet {
 		} catch (SyntaxError e) {
 			return "#Error";
 		}
+		
+	}
+
+	private void defineVariable(String input, Double value) {
+		// TODO Auto-generated method stub
 		
 	}
 	
