@@ -18,11 +18,8 @@ public class Sheet {
 			return text.trim();
 		}else if(text.startsWith("=")){
 			String sub=text.substring(1);
-			if(isCell(sub)){
-				return h.get(sub);
-			}else{
-				return evaluate(sub);				
-			}
+			return evaluate(CellValue(sub));
+			
 		}else{
 			return text;
 		}
@@ -32,13 +29,18 @@ public class Sheet {
 			h.put(position,value);
 	}
 
-	private boolean isCell(String input){
+	private String CellValue(String input){
+		String replace="";
 		Pattern p=Pattern.compile("[A-Z]+\\d+");
 		Matcher m=p.matcher(input);
+		while(m.find()){	
+			replace=input.replaceAll(m.group(), h.get(m.group()));
+			input=replace;
+		}
 		if(m.matches()){
-			return true;
+			return replace;
 		}else
-			return false;
+			return input;
 	}
 	
 	public String getLiteral(String position) {

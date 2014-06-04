@@ -21,17 +21,17 @@ public class Part3 extends TestCase {
 		}
 		
 
-//		public void testThatFormulasKnowCellsAndRecalculate () {
-//		  Sheet sheet = new Sheet();
-//		  sheet.put("A1", "8");
-//		  sheet.put("A2", "3");
-//		  sheet.put("B1", "=A1*(A1-A2)+A2/3");
-//		  assertEquals("calculation with cells", "41", sheet.get("B1"));
-//
-//		  sheet.put("A2", "6");
-//		  assertEquals("re-calculation", "18", sheet.get("B1"));
-//		}
-//
+		public void testThatFormulasKnowCellsAndRecalculate () {
+		  Sheet sheet = new Sheet();
+		  sheet.put("A1", "8");
+		  sheet.put("A2", "3");
+		  sheet.put("B1", "=A1*(A1-A2)+A2/3");
+		  assertEquals("calculation with cells", "41", sheet.get("B1"));
+
+		  sheet.put("A2", "6");
+		  assertEquals("re-calculation", "18", sheet.get("B1"));
+		}
+
 //		public void testThatDeepPropagationWorks () {
 //		  Sheet sheet = new Sheet();
 //		  sheet.put("A1", "8");
