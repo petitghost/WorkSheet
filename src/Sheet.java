@@ -34,11 +34,9 @@ public class Sheet {
 			String position=m.group();
 			String value=h.get(position);
 			while(value.startsWith("=")){
-				//value=h.get(value.substring(1));
 				value=CellValue(value.substring(1));
 			}
-			value="("+value+")";
-			input=input.replaceAll(position, value);
+			input=input.replaceAll(position, "("+value+")");
 		}
 		return input;
 	}

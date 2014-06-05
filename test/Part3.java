@@ -55,7 +55,7 @@ public class Part3 extends TestCase {
 		  sheet.put("B1", "7");
 		  sheet.put("B2", "=A2"); //17
 		  sheet.put("B3", "=A3-A2"); //17
-		  sheet.put("B4", "=A4+B3"); //51
+		  sheet.put("B4", "=A4+B3"); 
 
 		  
 		  assertEquals("multiple expressions - A4", "34", sheet.get("A4"));
