@@ -34,8 +34,10 @@ public class Sheet {
 			String position=m.group();
 			String value=h.get(position);
 			while(value.startsWith("=")){
-				value=h.get(value.substring(1));
+				//value=h.get(value.substring(1));
+				value=CellValue(value.substring(1));
 			}
+			value="("+value+")";
 			input=input.replaceAll(position, value);
 		}
 		return input;
@@ -69,10 +71,5 @@ public class Sheet {
 		
 	}
 
-	private void defineVariable(String input, Double value) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
 }
