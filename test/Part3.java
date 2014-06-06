@@ -61,27 +61,27 @@ public class Part3 extends TestCase {
 		  assertEquals("multiple expressions - A4", "34", sheet.get("A4"));
 		  assertEquals("multiple expressions - B4", "51", sheet.get("B4"));
 		}
-//
-//		// Refactor and get everything nice and clean.
-//
-//
-//		// Next: (I almost made this a separate part, and when I
-//		// originally did it, I did it in a different design session).
-//		// So take a break if you need one.
-//
-//		// There's one big open issue for formulas: what about
-//		// circular references? 
-//
-//		// I'll sketch some hints, but you should define your own tests
-//		// that drive toward a solution compatible with your own 
-//		// implementation.
-//
-//		public void testThatCircularReferenceDoesntCrash() {
-//		  Sheet sheet = new Sheet();
-//		  sheet.put("A1", "=A1");
-//		  assertTrue(true);
-//		}
-//
+
+		// Refactor and get everything nice and clean.
+
+
+		// Next: (I almost made this a separate part, and when I
+		// originally did it, I did it in a different design session).
+		// So take a break if you need one.
+
+		// There's one big open issue for formulas: what about
+		// circular references? 
+
+		// I'll sketch some hints, but you should define your own tests
+		// that drive toward a solution compatible with your own 
+		// implementation.
+
+		public void testThatCircularReferenceDoesntCrash() {
+		  Sheet sheet = new Sheet();
+		  sheet.put("A1", "=A1");
+		  assertTrue(true);
+		}
+
 //		// Just like errors return a special value, it might be nice
 //		// if circular references did too. (See notes below).
 //
