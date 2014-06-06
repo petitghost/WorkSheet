@@ -17,6 +17,9 @@ public class Sheet {
 		}else if(isNumber(text)){
 			return text.trim();
 		}else if(text.startsWith("=")){
+			if(position.equals(text.substring(1))){
+				return "#Circular";
+			}
 			return evaluate(CellValue(text.substring(1)));
 		}else{
 			return text;

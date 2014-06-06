@@ -82,28 +82,28 @@ public class Part3 extends TestCase {
 		  assertTrue(true);
 		}
 
-//		// Just like errors return a special value, it might be nice
-//		// if circular references did too. (See notes below).
-//
-//		public void testThatCircularReferencesAdmitIt () {
-//		  Sheet sheet = new Sheet();
-//		  sheet.put("A1", "=A1");
-//		  assertEquals("Detect circularity", "#Circular", sheet.get("A1"));
-//		}
-//
-//		// You might come up with some other approach that suits your 
-//		// taste. We won't be exploring this corner of the solution 
-//		// any further; you just want a scheme that blocks silly mistakes.
-//		// Make sure you test deep circularities involving partially
-//		// evaluated expressions.
-//
-//		// A hint: if you blindly evaluate an expression you have no
-//		// control over how deep the expression can be, since
-//		// circular references appear to be infinitely deep.
-//
-//
-//		// Where are we? I intend to spend the next two parts hooking
-//		// up a GUI. Then there will be an optional part that pushes 
-//		// things in an unexpected direction just to get a sense
-//		// of our software's robustness.
+		// Just like errors return a special value, it might be nice
+		// if circular references did too. (See notes below).
+
+		public void testThatCircularReferencesAdmitIt () {
+		  Sheet sheet = new Sheet();
+		  sheet.put("A1", "=A1");
+		  assertEquals("Detect circularity", "#Circular", sheet.get("A1"));
+		}
+
+		// You might come up with some other approach that suits your 
+		// taste. We won't be exploring this corner of the solution 
+		// any further; you just want a scheme that blocks silly mistakes.
+		// Make sure you test deep circularities involving partially
+		// evaluated expressions.
+
+		// A hint: if you blindly evaluate an expression you have no
+		// control over how deep the expression can be, since
+		// circular references appear to be infinitely deep.
+
+
+		// Where are we? I intend to spend the next two parts hooking
+		// up a GUI. Then there will be an optional part that pushes 
+		// things in an unexpected direction just to get a sense
+		// of our software's robustness.
 }
