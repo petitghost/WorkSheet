@@ -7,20 +7,27 @@ import org.matheclipse.parser.client.SyntaxError;
 import org.matheclipse.parser.client.eval.DoubleEvaluator;
 
 public class Sheet {
+	private static final Pattern TableCellName=Pattern.compile("[A-Z]+\\d+");
 	public Map<String, String> h = new TreeMap<String, String>();
 	
-	public String get(String position){
-		String text=h.get(position);
+	public String get(String key){
+		String text=getLiteral(key);
 		
 		if(text==null){
 			return "";
 		}else if(isNumber(text)){
 			return text.trim();
 		}else if(text.startsWith("=")){
-			if(position.equals(text.substring(1))){
+			String value=text.substring(1);
+			Matcher m=TableCellName.matcher(value);
+			if(key.equals(value)){
 				return "#Circular";
 			}
-			return evaluate(CellValue(text.substring(1)));
+			while(m.find()){	
+				String position=m.group();
+				value=value.replaceAll(position, "("+ get(position) +")");
+			}
+			return evaluate(value);
 		}else{
 			return text;
 		}
@@ -28,20 +35,6 @@ public class Sheet {
 		
 	public void put(String position, String value) {
 			h.put(position,value);
-	}
-
-	private String CellValue(String input){
-		Pattern p=Pattern.compile("[A-Z]+\\d+");
-		Matcher m=p.matcher(input);
-		while(m.find()){	
-			String position=m.group();
-			String value=h.get(position);
-			while(value.startsWith("=")){
-				value=CellValue(value.substring(1));
-			}
-			input=input.replaceAll(position, "("+value+")");
-		}
-		return input;
 	}
 	
 	public String getLiteral(String position) {
