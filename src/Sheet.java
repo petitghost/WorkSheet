@@ -20,12 +20,13 @@ public class Sheet {
 		}else if(text.startsWith("=")){
 			String value=text.substring(1);
 			Matcher m=TableCellName.matcher(value);
-			if(key.equals(value)){
-				return "#Circular";
-			}
 			while(m.find()){	
 				String position=m.group();
-				value=value.replaceAll(position, "("+ get(position) +")");
+				if(position.equals(getLiteral(position).substring(1))){
+					value=value.replaceAll(position, "#Circular");
+				}else{
+					value=value.replaceAll(position, "("+ get(position) +")");
+				}
 			}
 			return evaluate(value);
 		}else{
@@ -55,12 +56,17 @@ public class Sheet {
 	}
 	
 	private String evaluate(String input){
+		Pattern p=Pattern.compile("#Circular");
+		Matcher m=p.matcher(input);
+		if(m.find()){
+			return "#Circular";
+		}
 		try {
 			DoubleEvaluator engine = new DoubleEvaluator();
 			int result = (int) engine.evaluate(input);
 			return String.valueOf(result);
-		} catch (SyntaxError e) {
-			return "#Error";
+		} catch (SyntaxError e) {				
+				return "#Error";
 		}
 		
 	}

@@ -89,6 +89,13 @@ public class Part3 extends TestCase {
 		  Sheet sheet = new Sheet();
 		  sheet.put("A1", "=A1");
 		  assertEquals("Detect circularity", "#Circular", sheet.get("A1"));
+		  
+		  sheet.put("A2", "=3+A1");
+		  assertEquals("Detect circularity", "#Circular", sheet.get("A2"));
+		  
+		  sheet.put("B1", "=10");
+		  sheet.put("A3", "=B1+A1");
+		  assertEquals("Detect circularity", "#Circular", sheet.get("A3"));
 		}
 
 		// You might come up with some other approach that suits your 
