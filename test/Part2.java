@@ -73,7 +73,25 @@ public class Part2 extends TestCase {
 	  sheet.put("A1", "=7*(2+3)*((((2+1))))");
 	  assertEquals("Expr", "105", sheet.get("A1"));
 	}
-
+	
+	public void testSubtract() {
+		Sheet sheet = new Sheet();
+		sheet.put("A1", "=13-7-3");
+		assertEquals("Divide", "3", sheet.get("A1"));
+	}
+	
+	public void testDivide() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=21/7");
+	  assertEquals("Divide", "3", sheet.get("A1"));
+	}
+	
+	public void testOperate() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=21/7-1+3*3");
+	  assertEquals("Divide", "11", sheet.get("A1"));
+	}
+	
 	// Add any test cases you feel are missing based on 
 	// where your code is now.
 
@@ -94,7 +112,28 @@ public class Part2 extends TestCase {
 	  sheet.put("A1", "=(((((7))");
 	  assertEquals("Error", "#Error", sheet.get("A1")); 
 	}
+	
+	public void testMultiplyZero() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=7*0");
+	  assertEquals("Times", "0", sheet.get("A1"));
+	  
+	  sheet.put("A1", "=7*01");
+	  assertEquals("Times", "7", sheet.get("A1"));
+	}
+	
+	public void testUndetermined() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=6/0");
+	  assertEquals("Error", "#Error", sheet.get("A1"));
+	}
 
+	public void testDeepUndetermined() {
+	  Sheet sheet = new Sheet();
+	  sheet.put("A1", "=2*3+7/0-(6+2)");
+	  assertEquals("Error", "#Error", sheet.get("A1"));
+	}
+	
 	// Add any more error cases you need. Numeric errors (e.g.,
 	// divide by 0) can return #Error too.
 

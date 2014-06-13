@@ -64,7 +64,11 @@ public class Sheet {
 		try {
 			DoubleEvaluator engine = new DoubleEvaluator();
 			int result = (int) engine.evaluate(input);
-			return String.valueOf(result);
+			System.out.println(input+":"+result);
+			if(result==2147483647)
+				return "#Error";
+			else
+				return String.valueOf(result);
 		} catch (SyntaxError e) {				
 				return "#Error";
 		}
