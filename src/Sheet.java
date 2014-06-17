@@ -11,8 +11,7 @@ public class Sheet {
 	public Map<String, String> h = new TreeMap<String, String>();
 	
 	public String get(String key){
-		String text=getLiteral(key);
-		
+		String text=getLiteral(key);		
 		if(text==null){
 			return "";
 		}else if(isNumber(text)){
@@ -25,7 +24,7 @@ public class Sheet {
 				if(getLiteral(position)==null){
 					value=value.replaceAll(position, "0");
 				}else if(position.equals(getLiteral(position).substring(1))){ //null.substring is error
-					value=value.replaceAll(position, "#Circular");
+					return "#Circular";
 				}else{
 					value=value.replaceAll(position, "("+ get(position) +")");
 				}
@@ -58,16 +57,10 @@ public class Sheet {
 	}
 	
 	private String evaluate(String input){
-		Pattern p=Pattern.compile("#Circular");
-		Matcher m=p.matcher(input);
-		if(m.find()){
-			return "#Circular";
-		}
-		try {
-			
+		try {		
 			DoubleEvaluator engine = new DoubleEvaluator();
 			int result = (int) engine.evaluate(input);
-			if(result==2147483647)
+			if(result==Integer.MAX_VALUE) //if divide zero symja return Integer max value  
 				return "#Error";
 			else
 				return String.valueOf(result);
