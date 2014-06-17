@@ -58,6 +58,11 @@ public class Part1 extends TestCase {
 	  sheet.put(theCell, " 1234 "); // Blanks ignored
 	  assertEquals("1234", sheet.get(theCell));
 
+	  //=========Literal included operators===========
+	  sheet.put(theCell, "er+2");  
+	  assertEquals("er+2", sheet.get(theCell));
+	  //==============================================
+	  
 	  sheet.put(theCell, " "); // Just a blank
 	  assertEquals(" ", sheet.get(theCell));
 	}

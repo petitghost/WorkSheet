@@ -62,6 +62,18 @@ public class Part3 extends TestCase {
 		  assertEquals("multiple expressions - B4", "51", sheet.get("B4"));
 		}
 
+		//===========Divide Null Cell=============
+		public void testEvaluatNullCell(){
+			Sheet sheet = new Sheet();
+			sheet.put("A2", "=A1+3+2");
+			sheet.put("A3", "=7/A1"); //NullCell
+			sheet.put("A4", "15");
+			sheet.put("B1", "=A4/A1");
+			
+			assertEquals("5", sheet.get("A2"));
+			assertEquals("#Error", sheet.get("A3"));
+			assertEquals("#Error", sheet.get("B1"));
+		}
 		// Refactor and get everything nice and clean.
 
 
@@ -96,6 +108,16 @@ public class Part3 extends TestCase {
 		  sheet.put("B1", "=10");
 		  sheet.put("A3", "=B1+A1");
 		  assertEquals("Detect circularity", "#Circular", sheet.get("A3"));
+		}
+		
+		public void testWrongCellName(){
+			Sheet sheet = new Sheet();
+			sheet.put("A1","=7");
+			sheet.put("A2", "=8+A1");			
+			assertEquals("15", sheet.get("A2"));
+			
+//			sheet.put("A3", "=8+A"); // ask Erh-Chan for symja try-catch  throw
+//			assertEquals("#Error", sheet.get("A3"));
 		}
 
 		// You might come up with some other approach that suits your 

@@ -22,7 +22,9 @@ public class Sheet {
 			Matcher m=TableCellName.matcher(value);
 			while(m.find()){	
 				String position=m.group();
-				if(position.equals(getLiteral(position).substring(1))){
+				if(getLiteral(position)==null){
+					value=value.replaceAll(position, "0");
+				}else if(position.equals(getLiteral(position).substring(1))){ //null.substring is error
 					value=value.replaceAll(position, "#Circular");
 				}else{
 					value=value.replaceAll(position, "("+ get(position) +")");
@@ -62,14 +64,14 @@ public class Sheet {
 			return "#Circular";
 		}
 		try {
+			
 			DoubleEvaluator engine = new DoubleEvaluator();
 			int result = (int) engine.evaluate(input);
-			System.out.println(input+":"+result);
 			if(result==2147483647)
 				return "#Error";
 			else
 				return String.valueOf(result);
-		} catch (SyntaxError e) {				
+		} catch (SyntaxError e) {		
 				return "#Error";
 		}
 		

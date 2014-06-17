@@ -73,19 +73,22 @@ public class Part2 extends TestCase {
 	  sheet.put("A1", "=7*(2+3)*((((2+1))))");
 	  assertEquals("Expr", "105", sheet.get("A1"));
 	}
-	
+
+	//=======Subtraction evaluate==============
 	public void testSubtract() {
 		Sheet sheet = new Sheet();
 		sheet.put("A1", "=13-7-3");
-		assertEquals("Divide", "3", sheet.get("A1"));
+		assertEquals("Subtract", "3", sheet.get("A1"));
 	}
 	
+	//=======Divide evaluate===================
 	public void testDivide() {
 	  Sheet sheet = new Sheet();
 	  sheet.put("A1", "=21/7");
 	  assertEquals("Divide", "3", sheet.get("A1"));
 	}
 	
+	//=======test priority=====================
 	public void testOperate() {
 	  Sheet sheet = new Sheet();
 	  sheet.put("A1", "=21/7-1+3*3");
@@ -113,6 +116,7 @@ public class Part2 extends TestCase {
 	  assertEquals("Error", "#Error", sheet.get("A1")); 
 	}
 	
+	//=======Multiplied Zero================
 	public void testMultiplyZero() {
 	  Sheet sheet = new Sheet();
 	  sheet.put("A1", "=7*0");
@@ -122,12 +126,14 @@ public class Part2 extends TestCase {
 	  assertEquals("Times", "7", sheet.get("A1"));
 	}
 	
+	//=======Divide Zero====================
 	public void testUndetermined() {
 	  Sheet sheet = new Sheet();
 	  sheet.put("A1", "=6/0");
 	  assertEquals("Error", "#Error", sheet.get("A1"));
 	}
-
+	
+	//=======Deep Divide Zero====================
 	public void testDeepUndetermined() {
 	  Sheet sheet = new Sheet();
 	  sheet.put("A1", "=2*3+7/0-(6+2)");
